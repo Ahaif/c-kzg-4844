@@ -14,7 +14,7 @@ all: c_kzg_4844.o lib
 
 # If you change FIELD_ELEMENTS_PER_BLOB, remember to rm c_kzg_4844.o and make again
 c_kzg_4844.o: c_kzg_4844.c Makefile
-	${CLANG_EXECUTABLE} -Wall -I$(INCLUDE_DIRS) -DFIELD_ELEMENTS_PER_BLOB=$(FIELD_ELEMENTS_PER_BLOB) $(CFLAGS) -c $<
+	${CLANG_EXECUTABLE} -DCKZG_USE_PTHREAD -Wall -I$(INCLUDE_DIRS) -DFIELD_ELEMENTS_PER_BLOB=$(FIELD_ELEMENTS_PER_BLOB) $(CFLAGS) -c $<
 
 # Will fail with "patch does not apply" if it has already been patched.
 # Safe to ignore.
