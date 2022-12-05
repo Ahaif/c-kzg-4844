@@ -14,6 +14,10 @@ all: c_kzg_4844.o lib
 c_kzg_4844.o: c_kzg_4844.c Makefile
 	${CLANG_EXECUTABLE} -Wall -I$(INCLUDE_DIRS) $(CFLAGS) -c $<
 
+bench: bench.c c_kzg_4844.o Makefile 
+	${CLANG_EXECUTABLE} -Wall -I$(INCLUDE_DIRS) $(CFLAGS) $< c_kzg_4844.o ../lib/libblst.a -o bench
+	./bench
+
 # Will fail with "patch does not apply" if it has already been patched.
 # Safe to ignore.
 blst:
